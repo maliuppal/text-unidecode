@@ -1,8 +1,44 @@
 # text-unidecode
 
-**text-unidecode** converts Unicode text into an ASCII-heavy, human-readable approximation (rough transliteration). It is useful for slugs, logs, search indexes, and anywhere you need a plain-ASCII stand-in for arbitrary Unicode.
+> Turn “anything Unicode can throw at you” into something your logs, URLs, and 1980s-era pipelines can digest—without pretending to speak every language on earth.
 
-Maintained by [Muhammad Ali](https://github.com/maliuppal). Repository: [github.com/maliuppal/text-unidecode](https://github.com/maliuppal/text-unidecode).
+[Muhammad Ali](https://github.com/maliuppal) · [source & issues](https://github.com/maliuppal/text-unidecode)
+
+---
+
+## The idea in one sentence
+
+You pass a string; you get back an **ASCII-heavy sketch** of the same string. Letters with hats become letters without hats; ideographs become romanized-ish tokens; symbols you cannot map become whatever placeholder you choose. It is the same spirit as Perl’s **Text::Unidecode** (the lookup tables trace that lineage—see [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)).
+
+This is **not** translation, spell-checking, or NLP. It is a **deterministic mop** for human-readable fallbacks.
+
+### Example conversions
+
+| Input | Output |
+|-------|--------|
+| café | cafe |
+| München | Munchen |
+| 你好 | Ni Hao |
+| Привет | Privet |
+| Straße | Strasse |
+| Zürich | Zurich |
+| naïve | naive |
+| Æther | AEther |
+| Việt Nam | Viet Nam |
+| svensk åäö | svensk aao |
+| 한글 | hangeul |
+| 東京 | Dong Jing |
+| 日本語 | Ri Ben Yu |
+| हिन्दी | hindii |
+| Ελλάδα | Ellada |
+| Ελληνικά | Ellenika |
+| γειά σου | geia sou |
+| שלום | shlvm |
+| السلام | lslm |
+
+*Some CJK transliterations include a **trailing space** in the real return value (for example `你好` → `Ni Hao `, `東京` → `Dong Jing `, `日本語` → `Ri Ben Yu `). The “Output” column shows the visible text; use the library if you need the exact string.*
+
+---
 
 ## Install
 
@@ -10,7 +46,9 @@ Maintained by [Muhammad Ali](https://github.com/maliuppal). Repository: [github.
 npm install text-unidecode
 ```
 
-## Usage
+---
+
+## Drop it in
 
 ```js
 const unidecode = require('text-unidecode');
@@ -22,9 +60,11 @@ unidecode('に間違いがないか、再度確認してください。再読み
 // => 'niJian Wei iganaika, Zai Du Que Ren sitekudasai. Zai Du miIp misitekudasai. '
 ```
 
-### TypeScript
+---
 
-The package ships with typings (`text-unidecode` on npm). Example:
+## TypeScript
+
+Typings ship on npm. CommonJS-style import keeps `require` parity with the examples above:
 
 ```ts
 import unidecode = require('text-unidecode');
@@ -33,9 +73,13 @@ const out: string = unidecode('Müllerstraße');
 // => 'Mullerstrasse'
 ```
 
-### More examples
+---
 
-Latin-1 and accented Latin (diacritics are dropped or expanded to ASCII letters):
+## Same function, different alphabets
+
+Below, every `// =>` was produced by this package—think of it as a **sampler**, not a spec sheet for linguistics.
+
+**Latin with baggage** (diacritics flatten; ligatures expand):
 
 ```js
 unidecode('Café résumé naïve — Zürich');
@@ -45,7 +89,7 @@ unidecode('Vivere militare est. Æmilia');
 // => 'Vivere militare est. AEmilia'
 ```
 
-Greek, Cyrillic, and Arabic (romanization-style, not a translation):
+**Greek, Cyrillic, Arabic** (pronunciation-flavored ASCII, not meaning):
 
 ```js
 unidecode('Καλημέρα κόσμε');
@@ -58,7 +102,7 @@ unidecode('مرحبا بالعالم');
 // => 'mrHb bl`lm'
 ```
 
-CJK and mixed scripts:
+**CJK and kitchen-sink mixes**:
 
 ```js
 unidecode('你好世界');
@@ -68,7 +112,7 @@ unidecode('100% официально — да!');
 // => "100% ofitsial'no -- da!"
 ```
 
-Symbols, currency signs, and digits (ASCII is left as-is where possible):
+**Money signs, street names, plain digits** (ASCII tends to survive untouched):
 
 ```js
 unidecode('Price: €50 £30 ¥1000');
@@ -78,11 +122,14 @@ unidecode('Müllerstraße 42');
 // => 'Mullerstrasse 42'
 ```
 
-Rough transliteration is **not** a linguistic translation; treat output as a best-effort ASCII fingerprint for tooling (slugs, logs, search), not as correct prose in the target script.
+**Good fits:** slugs, log lines, naive search indexes, “show something in the terminal” fallbacks.  
+**Bad fits:** user-facing copy in the reader’s native language, legal names without review, anything where **wrong ASCII is worse than no ASCII**.
 
-### Custom replacement for unmappable characters
+---
 
-Code points with no mapping (for example private-use areas, or some symbols) become the second argument, or an empty string if you omit it:
+## When the table has no answer
+
+Some code points have no row in the data (private-use areas, stray symbols, emoji). Pass a **second argument** to stand in for those holes; omit it and they collapse to empty string.
 
 ```js
 unidecode('ab\uFFFFc', 'X');
@@ -101,21 +148,21 @@ unidecode('Hello 😀 world', '?');
 // => 'Hello ?? world'  (surrogate pair → two replacements)
 ```
 
-## Package layout
+---
 
-| Path | Purpose |
-|------|---------|
-| `src/unidecode.ts` | TypeScript source |
-| `lib/unidecode.js` | Compiled entry point (`npm run build`) |
-| `lib/unidecode.d.ts` | Type declarations |
-| `data/x*.js` | Per–Unicode-block lookup tables |
+## Where things live
 
-## Changelog
+| Path | Role |
+|------|------|
+| `src/unidecode.ts` | Authoring source |
+| `lib/unidecode.js` | What `require('text-unidecode')` loads after `npm run build` |
+| `lib/unidecode.d.ts` | Types for editors and `tsc` |
+| `data/x*.js` | One module per high byte—Unicode block tables |
 
-See [CHANGELOG.md](CHANGELOG.md).
+---
 
-## License
+## History & legal
 
-This project is licensed under the [MIT License](LICENSE).
-
-Transliteration data and incorporated third-party code are described in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
+- Release notes: [CHANGELOG.md](CHANGELOG.md)  
+- License: [MIT](LICENSE)  
+- Data and incorporated third-party material: [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)
