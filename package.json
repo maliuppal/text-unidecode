@@ -9,17 +9,17 @@
     "transliteration",
     "text-unidecode"
   ],
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "author": "Muhammad Ali <maliuppal@users.noreply.github.com> (https://github.com/maliuppal)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maliuppal/node-unidecode.git"
+    "url": "git+https://github.com/maliuppal/text-unidecode.git"
   },
   "bugs": {
-    "url": "https://github.com/maliuppal/node-unidecode/issues"
+    "url": "https://github.com/maliuppal/text-unidecode/issues"
   },
-  "homepage": "https://github.com/maliuppal/node-unidecode#readme",
+  "homepage": "https://github.com/maliuppal/text-unidecode#readme",
   "main": "./lib/unidecode.js",
   "exports": {
     ".": "./lib/unidecode.js"

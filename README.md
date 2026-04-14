@@ -2,7 +2,7 @@
 
 **text-unidecode** converts Unicode text into an ASCII-heavy, human-readable approximation (rough transliteration). It is useful for slugs, logs, search indexes, and anywhere you need a plain-ASCII stand-in for arbitrary Unicode.
 
-Maintained by [Muhammad Ali](https://github.com/maliuppal). Repository: [github.com/maliuppal/node-unidecode](https://github.com/maliuppal/node-unidecode).
+Maintained by [Muhammad Ali](https://github.com/maliuppal). Repository: [github.com/maliuppal/text-unidecode](https://github.com/maliuppal/text-unidecode).
 
 ## Install
 
