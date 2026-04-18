@@ -1,4 +1,6 @@
-# text-unidecode
+# Unidecode for NodeJS
+
+## text-unidecode
 
 > Turn “anything Unicode can throw at you” into something your logs, URLs, and 1980s-era pipelines can digest—without pretending to speak every language on earth.
 
@@ -150,19 +152,7 @@ unidecode('Hello 😀 world', '?');
 
 ---
 
-## Where things live
+## Donate
 
-| Path | Role |
-|------|------|
-| `src/unidecode.ts` | Authoring source |
-| `lib/unidecode.js` | What `require('text-unidecode')` loads after `npm run build` |
-| `lib/unidecode.d.ts` | Types for editors and `tsc` |
-| `data/x*.js` | One module per high byte—Unicode block tables |
+I maintain this project in my free time. If it helped you, please support my work via [PayPal](https://www.paypal.com/paypalme/aliuppal/10usd). Thanks a lot!
 
----
-
-## History & legal
-
-- Release notes: [CHANGELOG.md](CHANGELOG.md)  
-- License: [MIT](LICENSE)  
-- Data and incorporated third-party material: [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)
