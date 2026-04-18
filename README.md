@@ -8,7 +8,7 @@
 
 ## The idea in one sentence
 
-You pass a string; you get back an **ASCII-heavy sketch** of the same string. Letters with hats become letters without hats; ideographs become romanized-ish tokens; symbols you cannot map become whatever placeholder you choose. It is the same spirit as Perl’s **Text::Unidecode** (the lookup tables trace that lineage—see [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)).
+You pass a string; you get back an **ASCII-heavy sketch** of the same string. Letters with hats become letters without hats; ideographs become romanized-ish tokens; symbols you cannot map become whatever placeholder you choose. It is the same spirit as Perl’s **Text::Unidecode**.
 
 This is **not** translation, spell-checking, or NLP. It is a **deterministic mop** for human-readable fallbacks.
 

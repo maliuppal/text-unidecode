@@ -11,8 +11,6 @@ Files under `data/` are derived from the **Text::Unidecode** transliteration tab
 Some UTF-8 / UTF-16 conversion patterns in `lib/unidecode.js` trace to a prior **BSD-3-Clause** JavaScript implementation of the same algorithm. That code’s required notice:
 
 ```
-Copyright (c) 2013, Francois-Guillaume Ribreau <node@fgribreau.com>
-All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
