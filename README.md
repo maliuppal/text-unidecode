@@ -2,10 +2,6 @@
 
 ## text-unidecode
 
-> Turn “anything Unicode can throw at you” into something your logs, URLs, and 1980s-era pipelines can digest—without pretending to speak every language on earth.
-
-[Muhammad Ali](https://github.com/maliuppal) · [source & issues](https://github.com/maliuppal/text-unidecode)
-
 ---
 
 ## The idea in one sentence
@@ -149,6 +145,12 @@ unidecode('Hello 😀 world');
 unidecode('Hello 😀 world', '?');
 // => 'Hello ?? world'  (surrogate pair → two replacements)
 ```
+
+---
+
+> Turn “anything Unicode can throw at you” into something your logs, URLs, and 1980s-era pipelines can digest—without pretending to speak every language on earth.
+
+[Muhammad Ali](https://github.com/maliuppal) · [source & issues](https://github.com/maliuppal/text-unidecode)
 
 ---
 
