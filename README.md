@@ -4,40 +4,6 @@
 
 ---
 
-## The idea in one sentence
-
-You pass a string; you get back an **ASCII-heavy sketch** of the same string. Letters with hats become letters without hats; ideographs become romanized-ish tokens; symbols you cannot map become whatever placeholder you choose. It is the same spirit as Perl’s **Text::Unidecode**.
-
-This is **not** translation, spell-checking, or NLP. It is a **deterministic mop** for human-readable fallbacks.
-
-### Example conversions
-
-| Input | Output |
-|-------|--------|
-| café | cafe |
-| München | Munchen |
-| 你好 | Ni Hao |
-| Привет | Privet |
-| Straße | Strasse |
-| Zürich | Zurich |
-| naïve | naive |
-| Æther | AEther |
-| Việt Nam | Viet Nam |
-| svensk åäö | svensk aao |
-| 한글 | hangeul |
-| 東京 | Dong Jing |
-| 日本語 | Ri Ben Yu |
-| हिन्दी | hindii |
-| Ελλάδα | Ellada |
-| Ελληνικά | Ellenika |
-| γειά σου | geia sou |
-| שלום | shlvm |
-| السلام | lslm |
-
-*Some CJK transliterations include a **trailing space** in the real return value (for example `你好` → `Ni Hao `, `東京` → `Dong Jing `, `日本語` → `Ri Ben Yu `). The “Output” column shows the visible text; use the library if you need the exact string.*
-
----
-
 ## Install
 
 ```bash
@@ -70,6 +36,40 @@ import unidecode = require('text-unidecode');
 const out: string = unidecode('Müllerstraße');
 // => 'Mullerstrasse'
 ```
+
+---
+
+## The idea in one sentence
+
+You pass a string; you get back an **ASCII-heavy sketch** of the same string. Letters with hats become letters without hats; ideographs become romanized-ish tokens; symbols you cannot map become whatever placeholder you choose. It is the same spirit as Perl’s **Text::Unidecode**.
+
+This is **not** translation, spell-checking, or NLP. It is a **deterministic mop** for human-readable fallbacks.
+
+### Example conversions
+
+| Input | Output |
+|-------|--------|
+| café | cafe |
+| München | Munchen |
+| 你好 | Ni Hao |
+| Привет | Privet |
+| Straße | Strasse |
+| Zürich | Zurich |
+| naïve | naive |
+| Æther | AEther |
+| Việt Nam | Viet Nam |
+| svensk åäö | svensk aao |
+| 한글 | hangeul |
+| 東京 | Dong Jing |
+| 日本語 | Ri Ben Yu |
+| हिन्दी | hindii |
+| Ελλάδα | Ellada |
+| Ελληνικά | Ellenika |
+| γειά σου | geia sou |
+| שלום | shlvm |
+| السلام | lslm |
+
+*Some CJK transliterations include a **trailing space** in the real return value (for example `你好` → `Ni Hao `, `東京` → `Dong Jing `, `日本語` → `Ri Ben Yu `). The “Output” column shows the visible text; use the library if you need the exact string.*
 
 ---
 
@@ -157,4 +157,3 @@ unidecode('Hello 😀 world', '?');
 ## Donate
 
 I maintain this project in my free time. If it helped you, please support my work via [PayPal](https://www.paypal.com/paypalme/aliuppal/10usd). Thanks a lot!
-
